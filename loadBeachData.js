@@ -1,6 +1,6 @@
 const puppeteer = require('puppeteer');
 
-const loadBeaches = async (beaches) => {
+const loadBeachData = async (beaches) => {
     const browser = await puppeteer.launch({headless: false});
 
     const getTideInfo = async () => {
@@ -51,7 +51,7 @@ const loadBeaches = async (beaches) => {
                     //Return the time and height for each daylight low tide,.
                     return { date, time, metricHeight, height };
                 });
-                return {beach, tideData};
+                return {beach, lowTide:tideData};
             },beach);
         });
     };
@@ -61,4 +61,4 @@ const loadBeaches = async (beaches) => {
     return tideData;
 };
 
-export default loadBeaches;
+module.exports = loadBeachData; 
