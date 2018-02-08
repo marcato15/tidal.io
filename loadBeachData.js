@@ -1,10 +1,7 @@
 const puppeteer = require('puppeteer');
 
 const loadBeachData = async (beaches) => {
-    const browser = await puppeteer.launch({
-        args: ['--no-sandbox', '--disable-setuid-sandbox'],
-        headless: false,
-    });
+    const browser = await puppeteer.launch({args: ['--no-sandbox', '--disable-setuid-sandbox']});
 
     const getTideInfo = async () => {
         return beaches.map( async (beach) => {
