@@ -3,13 +3,14 @@ const puppeteer = require('puppeteer');
 const loadBeachData = async (beaches) => {
     const browser = await puppeteer.launch({
         args: ['--no-sandbox', '--disable-setuid-sandbox']
+        headless: false,
     });
 
     const getTideInfo = async () => {
         return beaches.map( async (beach) => {
             const url = `https://www.tide-forecast.com/locations/${beach}/tides/latest`;
             const page = await browser.newPage();
-            await page.goto(url);
+            await page.goto(url, { timeout: 0 });
 
             return await page.evaluate((beach) => {
                 const rowElements = document.querySelectorAll("#main > section > table > tbody > tr");
