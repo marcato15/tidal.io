@@ -1,7 +1,7 @@
 const puppeteer = require('puppeteer');
 
 const loadBeachData = async (beaches) => {
-    const browser = await puppeteer.launch({headless: false});
+    const browser = await puppeteer.launch();
 
     const getTideInfo = async () => {
         return beaches.map( async (beach) => {
