@@ -1,7 +1,11 @@
 const express = require('express');
+const apicache = require('apicache');
 const loadBeachData =  require("./loadBeachData");
 
 const app = express()
+const cache = apicache.middleware
+
+app.use(cache('7 days'))
 
 app.get('/', (req, res) => {
 
