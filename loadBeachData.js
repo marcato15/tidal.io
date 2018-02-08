@@ -47,7 +47,7 @@ const loadBeachData = async (beaches) => {
                     }
                     const time = timeRows[lowTideRow].innerText;
                     const metricHeight = metricRows[lowTideRow].innerText;
-                    const height = imperialRows[lowTideRow].innerText;
+                    const height = imperialRows[lowTideRow].innerText.replace(/[{()}]/g, '');
                     //Return the time and height for each daylight low tide,.
                     return { date, time, metricHeight, height };
                 });
