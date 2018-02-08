@@ -18,5 +18,7 @@ app.get('/', (req, res) => {
 
 });
 
-app.listen(3000, () => console.log('TidalData.io listening on port 3000!'))
+const port = process.env.PORT || 8080;
+
+app.listen(port, () => console.log('TidalData.io listening on port 3000!'))
 
