@@ -1,28 +1,23 @@
-const express = require('express');
-const apicache = require('apicache');
-const loadBeachData =  require("./loadBeachData");
+const loadPositionData  =  require("./loadPositionData");
 
-const app = express()
-const cache = apicache.middleware
+const positions = [
+  "C",
+  "1B",
+  "2B",
+  "3B",
+  "SS",
+  "RF",
+  "LF",
+  "CF",
+  "DH",
+  "PH",
+  "SP",
+  "RP",
+];
 
-app.use(cache('7 days'))
+const year = 2015;
 
-app.get('/', (req, res) => {
-
-    const beaches = [
-        "Half-Moon-Bay-California",
-        "Huntington-Beach",
-        "Providence-Rhode-Island",
-        "Wrightsville-Beach-North-Carolina"
-    ];
-
-    loadBeachData(beaches).then((value) => {
-        res.json(value);
-    });
-
-});
-
-const port = process.env.PORT || 3000;
-
-app.listen(port, () => console.log(`TidalData.io listening on port ${port}!`))
-
+loadPositionData(positions, year)
+  .then(data => {
+    console.log(JSON.stringify(data));
+  });
